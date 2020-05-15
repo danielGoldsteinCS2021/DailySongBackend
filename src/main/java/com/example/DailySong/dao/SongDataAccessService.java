@@ -17,4 +17,8 @@ public class SongDataAccessService implements SongDao{
         DB.add(song); // different from tutorial - this area could cause errors
         return 1;
     }
+
+    public List<Song> selectAllSongs(){
+        return DB;
+    }
 }

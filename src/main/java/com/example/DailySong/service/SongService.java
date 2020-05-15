@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SongService {
     private final SongDao songDao;
@@ -14,8 +16,10 @@ public class SongService {
         this.songDao = songDao;
     }
     public int addSong(Song song){
-        return songDao.addPerson(song); // he uses inset i use add to avoid creating UUID - maybe should change for no
-                                        // UUID
+        return songDao.addPerson(song);
+    }
+    public List<Song> getAllSongs(){
+        return songDao.selectAllSongs();
     }
 
 }
