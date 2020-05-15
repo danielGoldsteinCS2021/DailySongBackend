@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface SongDao {
-    int insertSong(Song song);
-    default int addPerson(Song song){
-        return insertSong(song);
-    }
-    List<Song> selectAllSongs();
+    void insertSong(Song song);
+    Song selectRandomSong();
 }

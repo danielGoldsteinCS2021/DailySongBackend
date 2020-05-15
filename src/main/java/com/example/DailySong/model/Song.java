@@ -20,17 +20,14 @@ public class Song {
     }
 
     /*
-        Didn't create any setters yet just getters - plan is to only be able
-        to retrieve data for now
+        Didn't create any setters as user can only retrieve data for now
      */
     public String getTitle() {
         return title;
     }
-
     public String getArtist(){
         return artist;
     }
-
     public String getYear(){
         return year;
     }

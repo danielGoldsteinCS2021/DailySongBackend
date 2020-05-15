@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class SongService {
     private final SongDao songDao;
@@ -15,11 +13,10 @@ public class SongService {
     public SongService(@Qualifier("songDao")  SongDao songDao){
         this.songDao = songDao;
     }
-    public int addSong(Song song){
-        return songDao.addPerson(song);
+    public void addSong(Song song){
+        songDao.insertSong(song);
     }
-    public List<Song> getAllSongs(){
-        return songDao.selectAllSongs();
+    public Song getRandomSong(){
+        return songDao.selectRandomSong();
     }
-
 }

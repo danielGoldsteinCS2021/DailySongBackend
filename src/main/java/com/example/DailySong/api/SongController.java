@@ -13,14 +13,16 @@ public class SongController {
     private final SongService songService;
 
     @Autowired
-    public SongController(SongService songService){
+    public SongController(SongService songService) {
         this.songService = songService;
     }
+
     @PostMapping
-    public void addSong(@RequestBody Song song){
+    public void addSong(@RequestBody Song song) {
         songService.addSong(song);
     }
+
     @GetMapping
-    public List<Song> getAllSongs(){ return
-            songService.getAllSongs(); }
+    public Song getRandomSong(){
+        return songService.getRandomSong(); }
 }
