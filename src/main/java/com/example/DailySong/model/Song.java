@@ -1,5 +1,6 @@
 package com.example.DailySong.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
@@ -10,13 +11,17 @@ public class Song {
     private final String artist;
     private final String year;
     private final String web_url;
+    @Id
+    private final String id;
 
-    public Song(@JsonProperty("title") String title, @JsonProperty("artist") String artist,
+    public Song(@JsonProperty("_id") String id,
+                @JsonProperty("title") String title, @JsonProperty("artist") String artist,
                 @JsonProperty("year") String year, @JsonProperty("web_url") String web_url){
         this.title = title;
         this.artist = artist;
         this.year = year;
         this.web_url = web_url;
+        this.id = id;
     }
 
     /*
@@ -33,5 +38,9 @@ public class Song {
     }
     public String getWeb_url(){
         return web_url;
+    }
+    @Override
+    public String toString() {
+        return '\n'+this.title+'\n';
     }
 }

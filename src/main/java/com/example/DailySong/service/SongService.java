@@ -1,5 +1,5 @@
 package com.example.DailySong.service;
-import com.example.DailySong.dao.SongDao;
+import com.example.DailySong.dao.SongDataAccessService;
 import com.example.DailySong.model.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SongService {
-    private final SongDao songDao;
+    private final SongDataAccessService songDataObject;
 
     @Autowired
-    public SongService(@Qualifier("songDao")  SongDao songDao){
-        this.songDao = songDao;
+    public SongService(@Qualifier("songDaoQ")  SongDataAccessService obj){
+        this.songDataObject = obj;
     }
     public void addSong(Song song){
-        songDao.insertSong(song);
+        songDataObject.insertSong(song);
     }
     public Song getRandomSong(){
-        return songDao.selectRandomSong();
+        return songDataObject.selectRandomSong();
     }
 }
