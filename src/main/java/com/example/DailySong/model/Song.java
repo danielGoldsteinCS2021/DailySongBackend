@@ -11,18 +11,29 @@ public class Song {
     private final String artist;
     private final String year;
     private final String web_url;
+    private final String[] genre;
+
+    /*
+    * do I even need id? Can we get rid of it somehow?
+    * */
     @Id
     private final String id;
 
-    public Song(@JsonProperty("_id") String id,
+    public Song(@JsonProperty("_id") String id, @JsonProperty("genre") String[] genre,
                 @JsonProperty("title") String title, @JsonProperty("artist") String artist,
                 @JsonProperty("year") String year, @JsonProperty("web_url") String web_url){
         this.title = title;
         this.artist = artist;
         this.year = year;
         this.web_url = web_url;
+        this.genre = genre;
         this.id = id;
     }
+
+    /*
+    * need to have findall.where or something
+    *
+    * */
 
     /*
         Didn't create any setters as user can only retrieve data for now

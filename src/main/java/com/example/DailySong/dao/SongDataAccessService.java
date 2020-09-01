@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Document(collection = "DailySong")
+
 @Repository("songDaoQ")
 public class SongDataAccessService {
     @Autowired
