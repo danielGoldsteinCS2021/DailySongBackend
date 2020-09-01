@@ -1,39 +1,23 @@
 package com.example.DailySong.dao;
 
 import com.example.DailySong.model.Song;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.*;
 
 
-@Repository("songDaoQ")
+@Repository("songDaoQualifier")
 public class SongDataAccessService {
-    @Autowired
-    private SongDao DB;
-    private static int numOfEntry = 1;
-    private static Random rand = new Random();
+    private final SongDao DB;
 
-
-    public void insertSong(Song song) {
-        numOfEntry++;
-      //  DB.add(song); // different from tutorial - this area could cause errors
+    public SongDataAccessService(SongDao db) {
+        DB = db;
     }
 
+    public void insertSong(Song song) {
+        System.out.println("insert not ready "+song);
+    }
 
-    public Song selectRandomSong(){
-        int songLocation = 0;
-        System.out.println("BEFORE LOOP BEGINS");
-        for (Song song : DB.findAll()) {
-            System.out.println(song);
-        }
-        return DB.findAll().get(0);
+    public List<Song> getAllSongsForGenre(String genre){
+        return DB.findAllByGenreContains(new String[]{ genre });
     }
 }

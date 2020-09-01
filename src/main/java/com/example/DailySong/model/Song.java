@@ -2,22 +2,18 @@ package com.example.DailySong.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.UUID;
+import java.util.Arrays;
 
 @Document(collection = "DailySong")
 public class Song {
+    @Id
+    private final String id;
     private final String title;
     private final String artist;
     private final String year;
     private final String web_url;
     private final String[] genre;
 
-    /*
-    * do I even need id? Can we get rid of it somehow?
-    * */
-    @Id
-    private final String id;
 
     public Song(@JsonProperty("_id") String id, @JsonProperty("genre") String[] genre,
                 @JsonProperty("title") String title, @JsonProperty("artist") String artist,
@@ -30,28 +26,26 @@ public class Song {
         this.id = id;
     }
 
-    /*
-    * need to have findall.where or something
-    *
-    * */
-
-    /*
-        Didn't create any setters as user can only retrieve data for now
-     */
     public String getTitle() {
         return title;
     }
     public String getArtist(){
         return artist;
     }
-    public String getYear(){
-        return year;
-    }
+    public String getYear(){ return year; }
     public String getWeb_url(){
         return web_url;
     }
+    public String getId() { return id; }
+    public String[] getGenre() { return genre; }
+
     @Override
     public String toString() {
-        return '\n'+this.title+'\n';
+        return "Title: "+getTitle()+'\n'+
+                "Artist: "+getArtist()+'\n'+
+                "Year: "+getYear()+'\n'+
+                "Web_url: "+getWeb_url()+'\n'+
+                "_id: "+getId()+'\n'+
+                "Genre(s): "+Arrays.toString(getGenre()) +'\n';
     }
 }
