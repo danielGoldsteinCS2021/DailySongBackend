@@ -19,10 +19,9 @@ public class SongController {
         songService.addSong(song);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     public Song getSong(@RequestParam String genre){
-        Song song = songService.getRandomSong(genre);
-        System.out.println(song);
-        return song;
+        return songService.getRandomSong(genre);
     }
 }
