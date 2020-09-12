@@ -29,3 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### properties and connection strings to mongoDB ###
+src/main/resources/application.properties
