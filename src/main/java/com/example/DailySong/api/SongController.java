@@ -19,7 +19,7 @@ public class SongController {
         songService.addSong(song);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     @GetMapping
     public Song getSong(@RequestParam String genre){
         return songService.getRandomSong(genre);
